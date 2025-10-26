@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: petclinic
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: appuser
+    password: password
+    url: jdbc:postgresql://localhost:5432/petclinic
+  jpa:
+    generate-ddl: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,env,beans, prometheus
+  server:
+    port: 8090
