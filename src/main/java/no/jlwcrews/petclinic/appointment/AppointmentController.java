@@ -1,13 +1,16 @@
 package no.jlwcrews.petclinic.appointment;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/api/appointment")
 public class AppointmentController {
 
@@ -21,8 +24,13 @@ public class AppointmentController {
     }
 
     @PostMapping
-    public ResponseEntity<Appointment> createAppointment(@RequestBody AppointmentDto appointmentDto) {
-        return ResponseEntity.ok(appointmentService.createAppointment(appointmentDto));
+    public String createAppointment(@RequestBody AppointmentDto appointmentDto, Model model) {
+        var appt = appointmentService.createAppointment(appointmentDto);
+        model.addAttribute("petName", appt.getPet().getName());
+        model.addAttribute("date", appt.getDate());
+        model.addAttribute("owner", appt.getPet().getOwner());
+        model.addAttribute("staff", appt.getStaff());
+        return "index";
     }
 
     @GetMapping

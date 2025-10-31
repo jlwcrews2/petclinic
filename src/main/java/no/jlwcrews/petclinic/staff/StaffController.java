@@ -1,7 +1,5 @@
 package no.jlwcrews.petclinic.staff;
 
-import no.jlwcrews.petclinic.staff.Staff;
-import no.jlwcrews.petclinic.staff.StaffService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +8,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/staff")
 public class StaffController {
-    
+
     private final StaffService staffService;
 
     public StaffController(StaffService staffService) {

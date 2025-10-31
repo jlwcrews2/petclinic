@@ -20,9 +20,21 @@
 
     <div class="receipt-details">
         <p><strong>Receipt #:</strong> 0012345</p>
-        <p><strong>Date:</strong> October 24, 2025</p>
-        <p><strong>Client Name:</strong> John Doe</p>
-        <p><strong>Pet Name:</strong> Fluffy</p>
+        <p><strong>Appointment Date:</strong><span th:text="${date}"></span></p>
+        <p><strong>Client Name:</strong><span th:text="${owner.firstName} + ' ' + ${owner.lastName}"></span></p>
+        <p><strong>Pet Name:</strong><span th:text="${petName}"></span></p>
+        <p><strong>Veterinary Staff:</strong></p>
+        <table>
+            <tr>
+                <th>Staff Member</th>
+                <th>Role</th>
+            </tr>
+            <tr th:each="member: ${staff}">
+                <td th:text="${member.getFirstName()} + ' ' +  ${member.getLastName()}"></td>
+                <td th:text="${member.getStaffType()}"></td>
+            </tr>
+            </td>
+        </table>
     </div>
 
     <hr>
@@ -63,7 +75,7 @@
     <hr>
 
     <div class="footer">
-        <p>Thank you for choosing Animal Hospital! We hope Fluffy is feeling better!</p>
+        <p>Thank you for choosing Animal Hospital! We hope <span th:text="${petName}"></span> is feeling better!</p>
         <p>For inquiries, call (555) 123-4567 or visit us at www.animalhospital.com.</p>
     </div>
 </div>

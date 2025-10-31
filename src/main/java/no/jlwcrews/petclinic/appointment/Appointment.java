@@ -1,6 +1,5 @@
 package no.jlwcrews.petclinic.appointment;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import no.jlwcrews.petclinic.pet.Pet;
 import no.jlwcrews.petclinic.staff.Staff;
@@ -19,7 +18,6 @@ public class Appointment {
 
     @ManyToOne
     @JoinColumn(name = "pet_id")
-    @JsonIgnoreProperties("owner")
     private Pet pet;
 
     @ManyToMany

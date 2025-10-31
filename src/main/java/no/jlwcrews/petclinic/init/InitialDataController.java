@@ -9,6 +9,7 @@ import no.jlwcrews.petclinic.pet.PetType;
 import no.jlwcrews.petclinic.staff.Staff;
 import no.jlwcrews.petclinic.staff.StaffService;
 import no.jlwcrews.petclinic.staff.StaffType;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -71,9 +72,9 @@ public class InitialDataController {
 
     private Pet generateNewPet(Owner owner) {
         var pet = switch (random.nextInt(3)) {
-            case 0 -> new Pet(faker.cat().name(), PetType.CAT, owner);
-            case 1 -> new Pet(faker.dog().name(), PetType.DOG, owner);
-            case 2 -> new Pet(faker.animal().name(), PetType.BIRD, owner);
+            case 0 -> new Pet(StringUtils.capitalize(faker.cat().name()), PetType.CAT, owner);
+            case 1 -> new Pet(StringUtils.capitalize(faker.dog().name()), PetType.DOG, owner);
+            case 2 -> new Pet(StringUtils.capitalize(faker.animal().name()), PetType.BIRD, owner);
             default -> null;
         };
         return petService.save(pet);
