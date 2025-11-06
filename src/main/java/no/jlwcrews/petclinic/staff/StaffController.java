@@ -1,5 +1,6 @@
 package no.jlwcrews.petclinic.staff;
 
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +16,7 @@ public class StaffController {
         this.staffService = staffService;
     }
 
-    @GetMapping
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Staff>> getStaffs() {
         return ResponseEntity.ok(staffService.findAll());
     }

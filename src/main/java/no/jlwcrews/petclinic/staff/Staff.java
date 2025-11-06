@@ -53,4 +53,14 @@ public class Staff {
     public void setStaffType(StaffType staffType) {
         this.staffType = staffType;
     }
+
+    @Override
+    public String toString() {
+        return "Staff{" +
+                "staffId=" + staffId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", staffType=" + staffType +
+                '}';
+    }
 }
