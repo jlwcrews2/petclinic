@@ -37,4 +37,9 @@ public class AppointmentController {
     public ResponseEntity<List<Appointment>> getAppointments() {
         return ResponseEntity.ok(appointmentService.findAllAppointments());
     }
+
+    @GetMapping("/owner/{id}")
+    public ResponseEntity<List<Appointment>> getAppointmentsByOwner(@PathVariable("id") int id) {
+        return ResponseEntity.ok(appointmentService.findAppointmentsByOwnerId(id));
+    }
 }

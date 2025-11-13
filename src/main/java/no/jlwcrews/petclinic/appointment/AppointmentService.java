@@ -46,4 +46,8 @@ public class AppointmentService {
         return List.of(vet, nurse);
     }
 
+    public List<Appointment> findAppointmentsByOwnerId(long ownerId) {
+        return repo.findAppointmentsByOwnerIdNative(ownerId);
+    }
+
 }

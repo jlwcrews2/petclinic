@@ -1,5 +1,6 @@
 package no.jlwcrews.petclinic.pet;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import no.jlwcrews.petclinic.owner.Owner;
 
@@ -15,6 +16,7 @@ public class Pet {
 
     @ManyToOne
     @JoinColumn(name = "owner_id")
+    @JsonIgnoreProperties("pets")
     private Owner owner;
 
     public Pet(String name, PetType petType, Owner owner) {
